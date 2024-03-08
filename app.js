@@ -1,4 +1,3 @@
-function saludar(nombre){
-    return `hola, ${nombre}`;
-}
-console.log(saludar("claudio"));
+const saludo = require('./saludo.js');
+console.log(saludo.saludar);
+console.log(saludo.saludarHolaMundo('jose'));
