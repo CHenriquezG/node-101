@@ -69,10 +69,62 @@
 
 /**
  
-modulo fs
+modulo fs : file system
  */
 
+const fs = require('fs');
+/** 
+fs.readFile('inde.html','utf-8',(err,contenido) => { // lee un archivo
+    if(err){
+        console.log(err);
+        throw err;
+    }else{
+        console.log(contenido);
+    }
+});
+*/
 
+/** 
+fs.rename('index.html','main.html',(err) =>{ // cambia el nombre
+    if(err){
+        throw err;
+    }else{
+        console.log('nombre cambiado exitosdamente');
+    }
+});
+*/
+/** 
+fs.appendFile('index.html','\n<p>agregado<p>',(err)=>{ // agrega datos
+    if(err){
+        throw err;
+    }else{
+        console.log('cambio exitoso');
+    }
+});
+*/
+/** 
+fs.writeFile('index.html','<h1>remplazo<h1>',(err)=>{ // escribe 
+    if(err){
+        throw err;
+    }else{
+        console.log('reemplazo exitoso');
+    }
+})*/
 
+/** 
+fs.unlink('index.html',(err)=>{ // elimina un archivo 
+    if(err){
+        throw err;
+    }else{
+        console.log('archivo eliminado');
+    }
+})
 
+// puedes colocar Sync en las funciones paar convertirlos en sincronas  
+*/
 
+// introduccion a npm: archivos que contiene paquetes que puedes instalar y usar en node
+// paquete = package.json - archivo o directorio que esta publicado en npm y describe 
+// modulo = cualquier archivono directorio en node_modules que pueded ser imporytado con requiere()
+// dependencia = es un paquete que depende de otro paquete/modulo
+// 
