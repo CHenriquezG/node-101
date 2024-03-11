@@ -127,4 +127,8 @@ fs.unlink('index.html',(err)=>{ // elimina un archivo
 // paquete = package.json - archivo o directorio que esta publicado en npm y describe 
 // modulo = cualquier archivono directorio en node_modules que pueded ser imporytado con requiere()
 // dependencia = es un paquete que depende de otro paquete/modulo
-// 
+
+
+
+
+// json = formato de texto usado para almacenar y transportar datos
