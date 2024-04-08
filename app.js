@@ -72,7 +72,9 @@
 modulo fs : file system
  */
 
+const { rejects } = require('assert');
 const fs = require('fs');
+const { resolve } = require('path');
 /** 
 fs.readFile('inde.html','utf-8',(err,contenido) => { // lee un archivo
     if(err){
@@ -132,3 +134,59 @@ fs.unlink('index.html',(err)=>{ // elimina un archivo
 
 
 // json = formato de texto usado para almacenar y transportar datos
+
+
+// eventos = realiza una accion
+// asincrono = proceso en paralelo
+// sincrono = proceso secuencial
+
+// modedlo vista conterolador
+// emitters (emisor) = emite un evento nombradosy llaman a funciones especificas cuando ocurre (eventEmitter)
+// se denomina Event Handler para manejo de evento 
+// el modulo event permite definir,emitir o escuchar eventos
+
+
+//const EventEmitter = require('events');
+//console.log(EventEmitter);
+
+
+//const emisorProductos= new EventEmitter(); 
+
+//emisorProductos.on('compra',()=>{
+//    console.log('se realizo una compra');
+//});
+//emisorProductos.on('carrito',(nombre)=>{
+//    console.log('se anadio al carrito el producto '+nombre );
+//});
+
+
+//emisorProductos.emit('compra');
+//emisorProductos.emit('carrito','silla');
+
+// promesa 
+
+const promesaCumplida = false;
+
+const miPromesa = new Promise((resolve,rejects)=> {
+    setTimeout(()=>{
+        if(promesaCumplida){
+            resolve('Promesa Cumplida');
+        }else{
+            rejects('Promesa rechazada...');
+        }
+    },3000);
+});
+
+//miPromesa.then((valor) =>{
+//    console.log(valor);
+//});
+
+
+const manejarPromesaCumplida = (valor) =>{
+    console.log(valor);
+}
+const manejarPromesaRechazo = (razonRechazo) => {
+    console.log(razonRechazo);
+}
+
+miPromesa.then(manejarPromesaCumplida,manejarPromesaRechazo);
