@@ -1,0 +1,7 @@
+POST http://localhost:3009/registrarinicio  HTTP/1.1
+Content-Type: application/json
+
+{
+    "Rut": "33061234-1",
+    "Inicio": "12:20:00"
+}

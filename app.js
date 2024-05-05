@@ -73,6 +73,7 @@ modulo fs : file system
  */
 
 const { rejects } = require('assert');
+const { error } = require('console');
 const fs = require('fs');
 const { resolve } = require('path');
 /** 
@@ -104,14 +105,14 @@ fs.appendFile('index.html','\n<p>agregado<p>',(err)=>{ // agrega datos
     }
 });
 */
-/** 
+
 fs.writeFile('index.html','<h1>remplazo<h1>',(err)=>{ // escribe 
     if(err){
         throw err;
     }else{
         console.log('reemplazo exitoso');
     }
-})*/
+})
 
 /** 
 fs.unlink('index.html',(err)=>{ // elimina un archivo 
@@ -164,6 +165,7 @@ fs.unlink('index.html',(err)=>{ // elimina un archivo
 //emisorProductos.emit('carrito','silla');
 
 // promesa 
+/**
 
 const promesaCumplida = false;
 
@@ -176,12 +178,12 @@ const miPromesa = new Promise((resolve,rejects)=> {
         }
     },3000);
 });
-
+*/
 //miPromesa.then((valor) =>{
 //    console.log(valor);
 //});
 
-
+/** 
 const manejarPromesaCumplida = (valor) =>{
     console.log(valor);
 }
@@ -190,3 +192,145 @@ const manejarPromesaRechazo = (razonRechazo) => {
 }
 
 miPromesa.then(manejarPromesaCumplida,manejarPromesaRechazo);
+
+*/
+
+
+
+function ordenarProducto(producto,segundos){
+    return new Promise((resolve,reject) => {
+        console.log(`solicitando: ${producto} de claudio`);
+        setTimeout(()=>{
+            if(producto === 'taza'){
+                resolve('ordenando una taza de claudio');
+            }else{
+                reject('producto no disponible');
+            }
+        },segundos)
+    });
+}
+
+function procesarPedido(respuesta){
+    return new Promise((resolve)=>{
+        console.log('procesando respuesta');
+        console.log(`La respuesta fue: ${respuesta}`);
+        setTimeout(()=>{
+            resolve('gracias por tu compra');
+        })
+    },4000);
+};
+/** 
+ordenarProducto('taza')
+.then(respuesta =>{
+    console.log('respuesta recibida');
+    console.log(respuesta);
+    return procesarPedido(respuesta);
+})
+.then(respuestaProcesada =>{
+    console.log(respuestaProcesada);
+})
+.catch(error => {
+    console.log(error);
+});
+
+*/
+// codigo equivalente de arriba 
+
+async function realizarPedido(producto,segundos){
+    try{
+    const respuesta = await ordenarProducto(producto,segundos);
+    console.log('respuesta recibida');
+    const respuestaProcesada = await procesarPedido(respuesta);
+    console.log(respuestaProcesada);
+    } catch(error){
+        console.log(error);  
+    }
+}
+let fecha =new Date();
+console.log(fecha);
+
+var dd = String(fecha.getDate()).padStart(2, '0');
+var mm = String(fecha.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = fecha.getFullYear();
+
+fecha = mm + '/' + dd + '/' + yyyy;
+
+
+
+
+
+//realizarPedido('taza',1000);
+
+//realizarPedido('taza',5000);
+
+//realizarPedido('taza',7000);
+
+//realizarPedido('taza',3000);
+
+/** 
+console.log(process.env.TZ);
+process.env.TZ = 'America/Santiago'; // se define la zona horaria en chile
+
+
+
+
+
+async function monitorearHorario(){
+    try{
+        var hora = new Date();
+        console.log(hora.getHours()+":"+hora.getMinutes());
+        // consultar bloque en que esta y se descontaria la hora en que esta 
+        var horaespera = 360*1000; 
+
+        while(conectado){
+            const respuesta = await procesarHora(horaespera);
+            console.log(respuesta);
+            hora = new Date();
+            console.log(hora.getHours()+":"+hora.getMinutes());
+
+
+
+        }
+
+    }catch(error){
+
+    }
+
+};
+
+conectado = true;
+function procesarHora(segundos){
+    return new Promise((resolve,reject) => {
+        console.log(`iniciado nuevo ciclo de 1 hora`);
+        setTimeout(()=>{
+            console.log(`solicitando entrada a la BD`);
+            if(conectado == true){
+                resolve('cerrando los horarios');
+            }else{
+                reject('no se puede conectar a la BD');
+            }
+        },segundos)
+    });
+}
+
+
+//monitorearHorario();
+
+const cursolocal = [];
+const curso = require('./curso.json'); //se importa el json
+
+let hola = {
+    "titulo":  "aprendiedo React.js",
+    "numeroVistas": 567834,
+    "numLikes": 4523456,
+    "temas":[
+        "Javascript",
+        "Node.js"
+    ],
+    "publico":true
+}
+
+
+console.log(cursolocal);
+cursolocal.push(hola);
+console.log(cursolocal);*/
