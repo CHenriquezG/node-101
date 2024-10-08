@@ -3,7 +3,7 @@
 
 
 
-
+/*
 
 let hola =  [
     {inicio:1,final:2},
@@ -23,4 +23,12 @@ let hola =  [
 
 let g = hola.filter(ele => ele.inicio <= 2 && ele.final >= 2 )
 
-console.log(g);
+console.log(g);*/
+
+
+
+let fecha = new Date();
+var minutos = -60;
+let fecha2 = new Date(fecha.getTime() + minutos*60000)
+console.log(fecha.getHours()+":"+fecha.getMinutes()+":"+fecha.getSeconds())
+console.log(fecha2.getHours()+":"+fecha2.getMinutes()+":"+fecha2.getSeconds())

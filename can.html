@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <canvas id="qr"></canvas>
+
+    <script src="node_modules/qrious/dist/qrious.js"></script>
+    <script>
+      (function() {
+        var qr = new QRious({
+          element: document.getElementById('qr'),
+          value: 'https://web-docente-dev.web.com'
+        });
+      })();
+    </script>
+  </body>
+</html>
